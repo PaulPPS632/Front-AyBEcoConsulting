@@ -5,4 +5,11 @@ module.exports = {
     extend: {},
   },
   plugins: [require("flowbite/plugin")],
+  theme: {
+    extend: {
+      colors: {
+        "verde-petroleo": "#01343F",
+      },
+    },
+  },
 };
