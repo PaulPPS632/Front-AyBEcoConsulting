@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FlowbiteService } from '../../services/flowbite.service';
 import { Router, RouterLink } from '@angular/router';
 import { CartStateService } from '../../services/cart-state.service';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-header-website',
@@ -11,14 +11,9 @@ import { CartStateService } from '../../services/cart-state.service';
   styleUrl: './header-website.component.css',
 })
 export class HeaderWebsiteComponent implements OnInit {
-  constructor(
-    private flowbiteService: FlowbiteService,
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
   ngOnInit(): void {
-    this.flowbiteService.loadFlowbite((flowbite) => {
-      console.log('flowbite loaded', flowbite);
-    });
+    initFlowbite();
   }
   cartState = inject(CartStateService).state;
   queryParams: any = {

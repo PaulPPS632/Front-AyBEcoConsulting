@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { dashboardGuard } from './dashboard.guard';
-import { panelGuard } from './panel.guard';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -10,17 +9,25 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    canLoad: [dashboardGuard],
+    canActivate: [authGuard],
     loadChildren: () =>
       import('./dashboard/dashboard.routes').then(
         (m) => m.DashboardRoutesModule
       ),
+    data: {
+      title: 'Dashboard',
+      roles: ['administrador', 'profesor', 'encargado'],
+    },
   },
   {
     path: 'panel',
-    canLoad: [panelGuard],
+    canActivate: [authGuard],
     loadChildren: () =>
       import('./panelcliente/panel.routes').then((m) => m.PanelRoutesModule),
+    data: {
+      title: 'Panel',
+      roles: ['alumno'],
+    },
   },
   {
     path: '**',

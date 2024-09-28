@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { FlowbiteService } from '../../services/flowbite.service';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-layout-dashboard',
@@ -10,10 +10,8 @@ import { FlowbiteService } from '../../services/flowbite.service';
   styleUrl: './layout-dashboard.component.css',
 })
 export class LayoutDashboardComponent implements OnInit {
-  constructor(private flowbiteService: FlowbiteService) {}
+  constructor() {}
   ngOnInit(): void {
-    this.flowbiteService.loadFlowbite((flowbite) => {
-      console.log('flowbite loaded', flowbite);
-    });
+    initFlowbite();
   }
 }

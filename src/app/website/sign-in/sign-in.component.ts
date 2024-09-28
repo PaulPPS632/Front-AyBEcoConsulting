@@ -64,9 +64,12 @@ export class SignInComponent implements OnInit {
       .Logged(this.UserNew.email, this.UserNew.password)
       .subscribe(
         (response) => {
-          if (response.usuario.Rol.nombre == 'cliente') {
+          console.log(response.usuario.Rol.nombre);
+          if (response.usuario.Rol.nombre == 'alumno') {
+            console.log('entra');
             this.router.navigate(['/panel']);
           } else {
+            console.log('entra dashboard');
             this.router.navigate(['/dashboard']);
           }
         },
