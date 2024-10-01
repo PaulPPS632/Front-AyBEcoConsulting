@@ -1,1 +1,9 @@
-<p>home works!</p>
+@if (Data.nuevos.length > 0 && Data.porCategoria.length > 0) {
+  <app-carousel [title]="'Nuevos'" [items]="Data.nuevos"></app-carousel>
+  @for (categorias of Data.porCategoria; track $index) {
+  <app-carousel
+    [title]="categorias.categoria.nombre"
+    [items]="categorias.cursos"
+  ></app-carousel>
+  }
+}

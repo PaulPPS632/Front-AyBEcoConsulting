@@ -1,1 +1,23 @@
-<p>cursos works!</p>
+<div class="flex flex-row justify-between py-7 px-2">
+    <h1 class="font-extrabold text-3xl">CURSOS</h1>
+    <button (click)="AbrirModal()" class="text-white px-5 py-2 rounded-lg bg-teal-900 hover:bg-teal-800 font-extrabold">NUEVO</button>    
+</div>
+
+<app-modal [isOpen]="FlagModal" [title]="'Crear Curso'" (close)="ToggleModal()">
+
+    <Form>
+        <app-input [Data]="NewCurso.nombre" (DataChange)="NewCurso.nombre = $event" [Name]="'Nombre'" [Type]="'text'" [Placeholder]="'Ingrese un Nombre'"></app-input>
+        <app-input [Data]="NewCurso.descripcion" (DataChange)="NewCurso.descripcion = $event"  [Name]="'Descripcion'" [Type]="'text'" [Placeholder]="'Ingrese una Descripcion'"></app-input>
+        <app-input [Data]="NewCurso.precio" (DataChange)="NewCurso.precio = $event"  [Name]="'Precio'" [Type]="'number'" [Placeholder]="'Ingrese un Precio'"></app-input>
+        <app-input [Data]="NewCurso.duracion" (DataChange)="NewCurso.duracion = $event"  [Name]="'Duracion'" [Type]="'number'" [Placeholder]="'Ingrese Tiempo aprox en Horas'"></app-input>
+        <app-select-serach [Data]="categorias" [Selected]="NewCurso.CategoriaId" (SelectedChange)="NewCurso.CategoriaId = $event" [Name]="'Categoria'" [RutaCreacion]="'/dashboard/categorias'"></app-select-serach>
+        <app-select-serach [Data]="entidades" [Selected]="NewCurso.EntidadAutorId" (SelectedChange)="NewCurso.EntidadAutorId= $event" [Name]="'Autor'" [RutaCreacion]="'/dashboard/entidades'"></app-select-serach>
+        <div class="mb-6">
+            <label for="archivo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccionar Archivo Principal</label>
+            <input type="file" id="archivo" name="archivo" (change)="onFileChangePrincipal($event)" multiple required class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+        </div>
+        <button (click)="Crear()"  class="text-white w-full px-5 py-2 font-extrabold rounded-lg bg-teal-900 hover:bg-teal-800">CREAR</button>
+    </Form>
+</app-modal>
+
+<app-tables [data]="cursos" [columns]="['id','nombre','descripcion','precio']"></app-tables>

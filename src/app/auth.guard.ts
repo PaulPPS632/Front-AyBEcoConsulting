@@ -7,7 +7,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
   const rolesPermitidos: string[] = route.data['roles'];
-  console.log(rolesPermitidos);
   return authService.isLoggedIn().pipe(
     tap((res) => {
       if (res.estado) {

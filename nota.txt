@@ -1,0 +1,11 @@
+      const {
+        nombre,
+        apellido,
+        documento,
+        direccion,
+        telefono,
+        email,
+        password,
+        RolId,
+        id_tipoEntidad,
+      } = req.body;

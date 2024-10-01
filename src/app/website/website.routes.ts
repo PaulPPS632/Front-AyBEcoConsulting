@@ -25,11 +25,11 @@ const routes: Routes = [
       {
         path: 'curso/:id',
         loadComponent: () =>
-          import('./catalogo/catalogo.component').then(
-            (m) => m.CatalogoComponent
+          import('./curso-detalle/curso-detalle.component').then(
+            (m) => m.CursoDetalleComponent
           ),
         data: {
-          title: 'Catálogo',
+          title: 'Curso Detalle',
         },
       },
       {

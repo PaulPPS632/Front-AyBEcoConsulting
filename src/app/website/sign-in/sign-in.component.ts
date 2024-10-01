@@ -22,6 +22,7 @@ export class SignInComponent implements OnInit {
     direccion: '',
     telefono: '',
     TipoEntidadId: 1,
+    RolId: 4,
   };
   CreateOpen = false;
   authService = inject(AuthService);

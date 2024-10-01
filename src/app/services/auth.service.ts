@@ -17,7 +17,6 @@ export class AuthService {
   }
 
   cargarUsuario() {
-    console.log('cargarUsuario');
     const token = this.getToken();
     if (token) {
       this.isLoggedIn().subscribe((res) => {
@@ -38,6 +37,9 @@ export class AuthService {
         localStorage.setItem('User', response.usuario);
       })
     );
+  }
+  create(registerRequest: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, registerRequest);
   }
 
   isLoggedIn(): Observable<any> {
