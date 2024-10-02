@@ -22,6 +22,9 @@ export class CursosService {
   getAll(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}`);
   }
+  getCourseById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
   create(data: FormData): Observable<any> {
     console.log(data);
     return this.http.post<any>(`${this.apiUrl}`, data, {
@@ -30,5 +33,8 @@ export class CursosService {
   }
   getCoursesHome(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/home`, { headers: this.headers });
+  }
+  getCursoCategoria(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/categoria/${id}`);
   }
 }

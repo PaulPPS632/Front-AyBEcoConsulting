@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectorRef,
   Component,
@@ -7,25 +8,20 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { register, SwiperContainer } from 'swiper/element/bundle';
+import { SwiperContainer } from 'swiper/element/bundle';
 import { SwiperOptions } from 'swiper/types';
-import { CartCursoComponent } from '../cart-curso/cart-curso.component';
-import { CommonModule } from '@angular/common';
 
-register();
 @Component({
-  selector: 'app-carousel',
+  selector: 'app-carouse-img',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CartCursoComponent, CommonModule],
-  templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css',
+  imports: [CommonModule],
+  templateUrl: './carouse-img.component.html',
+  styleUrl: './carouse-img.component.css',
 })
-export class CarouselComponent implements OnInit {
-  @Input() items: any[] = [];
-  @Input() title: string = '';
+export class CarouseImgComponent implements OnInit {
+  @Input() imagenes: string[] = [];
   @Input() id: string = 'swiper-' + Math.random().toString(36).substring(2, 15); // Generar un id único para cada carrusel
-
   swiperElement = signal<SwiperContainer | null>(null);
   cdr = inject(ChangeDetectorRef);
   ngOnInit(): void {
@@ -33,13 +29,12 @@ export class CarouselComponent implements OnInit {
     this.cdr.detectChanges();
     const swiperEl = document.querySelector(`.${this.id}`);
     const maxSlidesPerView = 5;
-    console.log('cantidad de items en carousel:', this.items.length);
     const swiperOption: SwiperOptions = {
       autoplay: {
         delay: 5000,
       },
       //scrollbar: true,
-      loop: true,
+      loop: this.items.length > maxSlidesPerView,
       navigation: {
         enabled: true,
         nextEl: '.swiper-button-next-' + this.id,

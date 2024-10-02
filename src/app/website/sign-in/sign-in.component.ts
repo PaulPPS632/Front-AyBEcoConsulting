@@ -5,10 +5,11 @@ import { AuthService } from '../../services/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { SvgAmigosComponent } from '../../components/svg-amigos/svg-amigos.component';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule, ModalComponent],
+  imports: [FormsModule, ModalComponent, SvgAmigosComponent],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css',
 })

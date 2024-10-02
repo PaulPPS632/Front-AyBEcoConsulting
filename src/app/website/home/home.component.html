@@ -1,3 +1,22 @@
+<div class="max-w-screen-xl mx-auto p-1 md:p-4">
+    
+
+<div class="w-full relative">
+  <div>
+    <svg class="rounded-lg" id="visual" viewBox="0 0 1230 540"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="1230" height="540" fill="#F0F7F4"></rect><g transform="translate(25.36689608552649 565.2107863127573)"><path d="M370.2 -520.4C496.7 -417.7 627.8 -332.1 686.9 -209.3C745.9 -86.4 732.9 73.8 695.1 236.9C657.3 400 594.6 566.1 474.6 617.1C354.6 668.1 177.3 604.1 -17.1 627.7C-211.6 651.3 -423.2 762.5 -562.9 717.9C-702.5 673.2 -770.2 472.7 -777.4 290.4C-784.6 108.1 -731.4 -56.1 -673.5 -214.1C-615.7 -372.1 -553.2 -523.8 -440.2 -630.9C-327.2 -738 -163.6 -800.5 -20.9 -771.8C121.9 -743.1 243.7 -623.1 370.2 -520.4" fill="#01343F"></path></g></svg>
+  </div>
+  <div class="absolute bottom-0 right-[2%] ">
+    <app-svg-amigos [estilos]="'w-[50vw] xl:w-[632px]'"/>
+  </div>
+
+  <div class="flex flex-col absolute bottom-[14%] md:bottom-[22%] lg:bottom-[33%] left-3 md:left-5 text-white gap-2 sm:gap-4">
+    <p class="font-extrabold text-xl sm:text-4xl md:text-5xl lg:text-6xl w-40 sm:w-80 lg:w-[430px]">Aprende Mas y Ahorra</p>
+    <p class="text-xs sm:text-lg w-44 sm:w-72">Con cursos desde solo S/30.00 aprenderas nuevas habilidades que te serviran</p>
+  </div>
+</div>
+
+
+
 @if (Data.nuevos.length > 0 && Data.porCategoria.length > 0) {
   <app-carousel [title]="'Nuevos'" [items]="Data.nuevos"></app-carousel>
   @for (categorias of Data.porCategoria; track $index) {
@@ -7,3 +26,4 @@
   ></app-carousel>
   }
 }
+</div>

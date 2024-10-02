@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 import { CursosService } from '../../services/cursos.service';
+import { SvgAmigosComponent } from '../../components/svg-amigos/svg-amigos.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselComponent],
+  imports: [CarouselComponent, SvgAmigosComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
