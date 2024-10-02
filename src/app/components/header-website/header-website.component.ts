@@ -11,11 +11,8 @@ import { initFlowbite } from 'flowbite';
   styleUrl: './header-website.component.css',
 })
 export class HeaderWebsiteComponent implements OnInit {
-  constructor(private router: Router) {}
-  ngOnInit(): void {
-    initFlowbite();
-  }
-  cartState = inject(CartStateService).state;
+  quantity = 0;
+  cartStateService = inject(CartStateService);
   queryParams: any = {
     page: 0,
     size: 10,
@@ -25,6 +22,13 @@ export class HeaderWebsiteComponent implements OnInit {
     categoria: '',
     subcategoria: '',
   };
+  constructor(private router: Router) {}
+  ngOnInit(): void {
+    initFlowbite();
+    this.cartStateService.quantity$.subscribe((qty) => {
+      this.quantity = qty;
+    });
+  }
   buscar(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     this.queryParams.search = inputElement.value;

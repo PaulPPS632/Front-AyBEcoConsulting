@@ -1,67 +1,87 @@
-import { inject, Injectable, Signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
-import { map, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { CartState } from '../models/cart-state.model';
 import { Curso } from '../models/curso.model';
-import { signalSlice } from 'ngxtension/signal-slice';
-import { CursosItemCart } from '../models/cursos-item-cart.model';
+
 @Injectable({
   providedIn: 'root',
 })
 export class CartStateService {
   private _storageService = inject(StorageService);
 
-  private initialState: CartState = {
+  // BehaviorSubject para mantener el estado del carrito
+  private cartState$ = new BehaviorSubject<CartState>({
     cursos: [],
     quantity: 0,
     loaded: false,
-  };
-
-  loadCursos$ = this._storageService
-    .loadCursos()
-    .pipe(map((Cursos) => ({ Cursos, loaded: true })));
-
-  state = signalSlice({
-    initialState: this.initialState,
-    sources: [this.loadCursos$],
-    selectors: (state) => ({
-      count: () => state().quantity,
-      price: () => {
-        return state().cursos.reduce((acc, Curso) => acc + Curso.precio, 0);
-      },
-    }),
-    actionSources: {
-      add: (state, action$: Observable<Curso>) =>
-        action$.pipe(map((Curso) => this.add(state, Curso))),
-      remove: (state, action$: Observable<string>) =>
-        action$.pipe(map((id) => this.remove(state, id))),
-    },
-    effects: (state) => ({
-      load: () => {
-        if (state().loaded) {
-          this._storageService.saveCursos(state().cursos);
-        }
-      },
-    }),
   });
 
-  private add(state: Signal<CartState>, NewCurso: Curso) {
-    const currentState = state();
-
-    if (!currentState.cursos.some((curso) => curso.id === NewCurso.id)) {
-      // Comparación por un identificador único
-      return {
-        ...currentState, // Mantenemos el resto del estado
-        cursos: [...currentState.cursos, { ...NewCurso }],
-        quantity: currentState.quantity + 1, // Actualizamos la cantidad aquí
-      };
-    }
-    return currentState;
+  // Observable que expone el estado para su suscripción
+  state$ = this.cartState$.asObservable();
+  cursos$ = this.state$.pipe(map((state) => state.cursos));
+  quantity$ = this.state$.pipe(map((state) => state.quantity));
+  constructor() {
+    // Cargar cursos desde el localStorage al inicializar el servicio
+    this.loadCursos();
   }
 
-  private remove(state: Signal<CartState>, id: string) {
-    return {
-      cursos: state().cursos.filter((cursos) => cursos.id !== id),
+  // Método para agregar un curso al carrito
+  addCurso(newCurso: Curso): boolean {
+    const currentState = this.cartState$.getValue();
+
+    // Comprobar si el curso ya existe
+    if (!currentState.cursos.some((curso) => curso.id === newCurso.id)) {
+      const updatedCursos = [...currentState.cursos, newCurso];
+
+      // Actualizar el estado del carrito
+      const updatedState: CartState = {
+        ...currentState,
+        cursos: updatedCursos,
+        quantity: currentState.quantity + 1,
+      };
+
+      // Emitir el nuevo estado
+      this.cartState$.next(updatedState);
+
+      // Guardar en localStorage
+      this._storageService.saveCursos(updatedCursos);
+
+      return true; // Se agregó correctamente
+    }
+
+    return false; // Ya existía en el carrito
+  }
+
+  // Método para eliminar un curso del carrito
+  removeCurso(id: string) {
+    const currentState = this.cartState$.getValue();
+    const updatedCursos = currentState.cursos.filter(
+      (curso) => curso.id !== id
+    );
+
+    const updatedState: CartState = {
+      ...currentState,
+      cursos: updatedCursos,
+      quantity: currentState.quantity - 1,
     };
+
+    this.cartState$.next(updatedState);
+    this._storageService.saveCursos(updatedCursos);
+  }
+
+  // Cargar los cursos guardados en localStorage
+  private loadCursos() {
+    this._storageService.loadCursos().subscribe((cursos: Curso[]) => {
+      const currentState = this.cartState$.getValue();
+
+      // Emitir el estado actualizado con los cursos cargados
+      this.cartState$.next({
+        ...currentState,
+        cursos,
+        quantity: cursos.length,
+        loaded: true,
+      });
+    });
   }
 }

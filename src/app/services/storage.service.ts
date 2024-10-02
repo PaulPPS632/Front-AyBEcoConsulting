@@ -13,10 +13,8 @@ export class StorageService {
   loadCursos(): Observable<Curso[]> {
     try {
       const data = localStorage.getItem(this.STORAGE_KEY);
-      console.log('Cursos cargados del almacenamiento:', data);
       return of(data ? JSON.parse(data) : []);
     } catch (error) {
-      console.error('Error al cargar los cursos del almacenamiento:', error);
       return throwError(
         () => new Error('Error al cargar los cursos del almacenamiento.')
       );
