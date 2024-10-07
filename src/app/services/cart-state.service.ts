@@ -21,6 +21,9 @@ export class CartStateService {
   state$ = this.cartState$.asObservable();
   cursos$ = this.state$.pipe(map((state) => state.cursos));
   quantity$ = this.state$.pipe(map((state) => state.quantity));
+  total$ = this.cursos$.pipe(
+    map((cursos) => cursos.reduce((total, curso) => total + curso.precio, 0))
+  );
   constructor() {
     // Cargar cursos desde el localStorage al inicializar el servicio
     this.loadCursos();

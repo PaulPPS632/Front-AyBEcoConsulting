@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CartStateService } from '../../services/cart-state.service';
 import { initFlowbite } from 'flowbite';
+import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
 
 @Component({
   selector: 'app-header-website',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ThemeToggleComponent],
   templateUrl: './header-website.component.html',
   styleUrl: './header-website.component.css',
 })
