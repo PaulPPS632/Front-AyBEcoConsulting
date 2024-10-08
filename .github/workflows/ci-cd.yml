@@ -63,12 +63,17 @@ jobs:
       - name: Deploy via FTP
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
+          host: "ftp.aybecoconsultingperu.com"
+          username: "capacitaciones@aybecoconsultingperu.com"
           password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
+          port: 21
           source: "dist/front-ay-b/browser/"
           target: "."
+          timeout: 30s
+          command_timeout: 10m
+          use_insecure_cipher: false
+          rm: false
+          debug: true
 
       # Paso 10: Restaurar .htaccess
       #- name: Restore .htaccess
