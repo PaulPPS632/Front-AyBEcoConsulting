@@ -46,7 +46,7 @@ jobs:
 
       # Paso 7: Construir el proyecto
       - name: Build Project
-        run: npm run build -- --prod
+        run: npm run build
 
       # Paso 8: Respaldo de .htaccess
       - name: Backup .htaccess
