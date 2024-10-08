@@ -67,6 +67,7 @@ jobs:
           username: "capacitaciones@aybecoconsultingperu.com"
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
+          proxy_port: 21
           source: "dist/front-ay-b/browser/"
           target: "."
           timeout: 30s
