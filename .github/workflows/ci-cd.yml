@@ -67,7 +67,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
-          source: "dist/front-ay-b/browser"
+          source: "dist/front-ay-b/browser/"
           target: "."
 
       # Paso 10: Restaurar .htaccess
