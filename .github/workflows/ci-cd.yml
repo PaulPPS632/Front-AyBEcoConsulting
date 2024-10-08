@@ -1,0 +1,86 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Clonar el repositorio
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Paso 2: Configurar Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Asegúrate de que coincide con tu proyecto
+
+      # Paso 3: Cache de dependencias para acelerar
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Paso 4: Instalar dependencias
+      - name: Install Dependencies
+        run: npm install
+
+      # Paso 5: Ejecutar Linter
+      - name: Run Linter
+        run: npm run lint
+
+      # Paso 6: Ejecutar pruebas
+      #- name: Run Tests
+      #  run: npm test -- --watch=false --browsers=ChromeHeadlessCI
+
+      # Paso 7: Construir el proyecto
+      - name: Build Project
+        run: npm run build -- --prod
+
+      # Paso 8: Respaldo de .htaccess
+      - name: Backup .htaccess
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          source: ".htaccess"
+          target: "backup/.htaccess"
+
+      # Paso 9: Desplegar mediante FTP
+      - name: Deploy via FTP
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          source: "dist/front-ay-b/browser"
+          target: "."
+
+      # Paso 10: Restaurar .htaccess
+      - name: Restore .htaccess
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          source: "backup/.htaccess"
+          target: ".htaccess"
+
+      # Paso 11: Limpiar Archivos de Respaldo (Opcional)
+      - name: Clean Backup Files
+        run: rm -rf backup/
