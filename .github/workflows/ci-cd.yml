@@ -49,15 +49,15 @@ jobs:
         run: npm run build
 
       # Paso 8: Respaldo de .htaccess
-      - name: Backup .htaccess
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
-          source: ".htaccess"
-          target: "backup/.htaccess"
+      #- name: Backup .htaccess
+      #  uses: appleboy/scp-action@v0.1.4
+      #  with:
+      #    host: ${{ secrets.FTP_HOST }}
+      #    username: ${{ secrets.FTP_USERNAME }}
+      #    password: ${{ secrets.FTP_PASSWORD }}
+      #    port: ${{ secrets.FTP_PORT }}
+      #    source: ".htaccess"
+      #    target: "backup/.htaccess"
 
       # Paso 9: Desplegar mediante FTP
       - name: Deploy via FTP
@@ -71,16 +71,16 @@ jobs:
           target: "."
 
       # Paso 10: Restaurar .htaccess
-      - name: Restore .htaccess
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
-          source: "backup/.htaccess"
-          target: ".htaccess"
+      #- name: Restore .htaccess
+      #  uses: appleboy/scp-action@v0.1.4
+      #  with:
+      #    host: ${{ secrets.FTP_HOST }}
+      #    username: ${{ secrets.FTP_USERNAME }}
+      #    password: ${{ secrets.FTP_PASSWORD }}
+      #    port: ${{ secrets.FTP_PORT }}
+      #    source: "backup/.htaccess"
+      #    target: ".htaccess"
 
       # Paso 11: Limpiar Archivos de Respaldo (Opcional)
-      - name: Clean Backup Files
-        run: rm -rf backup/
+      #- name: Clean Backup Files
+      #  run: rm -rf backup/
