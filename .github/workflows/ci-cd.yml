@@ -48,43 +48,46 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      # Paso 8: Respaldo de .htaccess
-      #- name: Backup .htaccess
-      #  uses: appleboy/scp-action@v0.1.4
-      #  with:
-      #    host: ${{ secrets.FTP_HOST }}
-      #    username: ${{ secrets.FTP_USERNAME }}
-      #    password: ${{ secrets.FTP_PASSWORD }}
-      #    port: ${{ secrets.FTP_PORT }}
-      #    source: ".htaccess"
-      #    target: "backup/.htaccess"
-
       # Paso 9: Desplegar mediante FTP
-      - name: Deploy via FTP
+      #- name: Deploy via FTP
+      #  uses: SamKirkland/FTP-Deploy-Action@4.1.0
+      #  with:
+      #    server: ftp.aybecoconsultingperu.com
+      #    username: capacitaciones@aybecoconsultingperu.com
+      #    password: ${{ secrets.FTP_PASSWORD }} # Asegúrate de agregar esto en Secrets
+      #    port: 21
+      #    local-dir: dist/front-ay-b/browser/ # Directorio local de la aplicación Angular
+      #    remote-dir: . # Directorio remoto donde deseas desplegar
+      #    git-ftp-branch: desarrollo # Rama que estás utilizando
+      #    cleanup: true # Eliminar archivos en el servidor que no están en local
+      #    dry-run: false # Cambia a true si solo deseas simular la implementación
+      #    debug: true # Activa el modo de depuración para ver detalles
+
+      - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           server: ftp.aybecoconsultingperu.com
           username: capacitaciones@aybecoconsultingperu.com
-          password: ${{ secrets.FTP_PASSWORD }} # Asegúrate de agregar esto en Secrets
+          password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          local-dir: dist/front-ay-b/browser/ # Directorio local de la aplicación Angular
-          remote-dir: . # Directorio remoto donde deseas desplegar
-          git-ftp-branch: desarrollo # Rama que estás utilizando
-          cleanup: true # Eliminar archivos en el servidor que no están en local
-          dry-run: false # Cambia a true si solo deseas simular la implementación
-          debug: true # Activa el modo de depuración para ver detalles
+          local-dir: dist/front-ay-b/browser/
+          remote-dir: .
+          cleanup: true # Opción para eliminar archivos que no están en local
+          dry-run: false
+          debug: true
 
-
-      # Paso 10: Restaurar .htaccess
-      #- name: Restore .htaccess
-      #  uses: appleboy/scp-action@v0.1.4
-      #  with:
-      #    host: ${{ secrets.FTP_HOST }}
-      #    username: ${{ secrets.FTP_USERNAME }}
-      #    password: ${{ secrets.FTP_PASSWORD }}
-      #    port: ${{ secrets.FTP_PORT }}
-      #    source: "backup/.htaccess"
-      #    target: ".htaccess"
+      - name: Upload .htaccess
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: ftp.aybecoconsultingperu.com
+          username: capacitaciones@aybecoconsultingperu.com
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          source: .htaccess # Especifica el archivo .htaccess directamente
+          remote-dir: . # Colocarlo en el directorio donde se requiere en el servidor
+          cleanup: false # No eliminar archivos en este paso
+          dry-run: false
+          debug: true
 
       # Paso 11: Limpiar Archivos de Respaldo (Opcional)
       #- name: Clean Backup Files
