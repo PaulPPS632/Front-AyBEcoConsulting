@@ -72,9 +72,6 @@ jobs:
           port: 21
           local-dir: dist/front-ay-b/browser/
           remote-dir: .
-          cleanup: true # Opción para eliminar archivos que no están en local
-          dry-run: false
-          debug: true
 
       - name: Upload .htaccess
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
@@ -85,9 +82,9 @@ jobs:
           port: 21
           local-dir: access/
           remote-dir: . # Colocarlo en el directorio donde se requiere en el servidor
-          cleanup: false # No eliminar archivos en este paso
-          dry-run: false
-          debug: true
+          exclude: "**/*" # Excluir todos los demás archivos
+          include: ".htaccess" # Incluir solo el archivo .htaccess
+
 
       # Paso 11: Limpiar Archivos de Respaldo (Opcional)
       #- name: Clean Backup Files
