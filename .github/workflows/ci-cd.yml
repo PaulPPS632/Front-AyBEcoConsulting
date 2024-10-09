@@ -82,7 +82,7 @@ jobs:
           port: 21
           local-dir: access/
           remote-dir: . # Colocarlo en el directorio donde se requiere en el servidor
-          dangerous-clean-slate: false
+          dangerous-clean-slate: true
 
       # Paso 11: Limpiar Archivos de Respaldo (Opcional)
       #- name: Clean Backup Files
