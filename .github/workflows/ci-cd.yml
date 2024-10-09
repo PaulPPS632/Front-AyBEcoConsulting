@@ -82,9 +82,7 @@ jobs:
           port: 21
           local-dir: access/
           remote-dir: . # Colocarlo en el directorio donde se requiere en el servidor
-          exclude: "**/*" # Excluir todos los demás archivos
-          include: ".htaccess" # Incluir solo el archivo .htaccess
-
+          dangerous-clean-slate: false
 
       # Paso 11: Limpiar Archivos de Respaldo (Opcional)
       #- name: Clean Backup Files
