@@ -83,8 +83,7 @@ jobs:
           username: capacitaciones@aybecoconsultingperu.com
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          local-dir: .
-          source: .htaccess # Especifica el archivo .htaccess directamente
+          local-dir: access/
           remote-dir: . # Colocarlo en el directorio donde se requiere en el servidor
           cleanup: false # No eliminar archivos en este paso
           dry-run: false
