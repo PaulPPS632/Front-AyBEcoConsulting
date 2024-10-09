@@ -23,7 +23,6 @@ jobs:
         with:
           node-version: "18" # Asegúrate de que coincide con tu proyecto
 
-      # Paso 3: Cache de dependencias para acelerar
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
@@ -32,36 +31,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # Paso 4: Instalar dependencias
       - name: Install Dependencies
         run: npm install
-
-      # Paso 5: Ejecutar Linter
-      #- name: Run Linter
-      #  run: npm run lint
-
-      # Paso 6: Ejecutar pruebas
-      #- name: Run Tests
-      #  run: npm test -- --watch=false --browsers=ChromeHeadlessCI
 
       # Paso 7: Construir el proyecto
       - name: Build Project
         run: npm run build
-
-      # Paso 9: Desplegar mediante FTP
-      #- name: Deploy via FTP
-      #  uses: SamKirkland/FTP-Deploy-Action@4.1.0
-      #  with:
-      #    server: ftp.aybecoconsultingperu.com
-      #    username: capacitaciones@aybecoconsultingperu.com
-      #    password: ${{ secrets.FTP_PASSWORD }} # Asegúrate de agregar esto en Secrets
-      #    port: 21
-      #    local-dir: dist/front-ay-b/browser/ # Directorio local de la aplicación Angular
-      #    remote-dir: . # Directorio remoto donde deseas desplegar
-      #    git-ftp-branch: desarrollo # Rama que estás utilizando
-      #    cleanup: true # Eliminar archivos en el servidor que no están en local
-      #    dry-run: false # Cambia a true si solo deseas simular la implementación
-      #    debug: true # Activa el modo de depuración para ver detalles
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
@@ -82,8 +57,4 @@ jobs:
           port: 21
           local-dir: access/
           remote-dir: . # Colocarlo en el directorio donde se requiere en el servidor
-          dangerous-clean-slate: true
-
-      # Paso 11: Limpiar Archivos de Respaldo (Opcional)
-      #- name: Clean Backup Files
-      #  run: rm -rf backup/
+          dangerous-clean-slate: false
