@@ -38,7 +38,7 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Create .htaccess
+      - name: Create .htaccess 2
         run: |
           echo '<IfModule mod_rewrite.c>' > dist/front-ay-b/browser/.htaccess
           echo '    RewriteEngine On' >> dist/front-ay-b/browser/.htaccess
