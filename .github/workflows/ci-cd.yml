@@ -60,3 +60,4 @@ jobs:
           port: 21
           local-dir: dist/front-ay-b/browser/
           server-dir: /
+          dangerous-clean-slate: true
