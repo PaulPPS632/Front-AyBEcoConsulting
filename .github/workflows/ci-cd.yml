@@ -38,6 +38,19 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Create .htaccess
+        run: |
+          echo '<IfModule mod_rewrite.c>' > dist/front-ay-b/browser/.htaccess
+          echo '    RewriteEngine On' >> dist/front-ay-b/browser/.htaccess
+          echo '' >> dist/front-ay-b/browser/.htaccess
+          echo '    # Redirigir todas las solicitudes a index.html' >> dist/front-ay-b/browser/.htaccess
+          echo '    RewriteBase /' >> dist/front-ay-b/browser/.htaccess
+          echo '    RewriteRule ^index\.html$ - [L]' >> dist/front-ay-b/browser/.htaccess
+          echo '    RewriteCond %{REQUEST_FILENAME} !-f' >> dist/front-ay-b/browser/.htaccess
+          echo '    RewriteCond %{REQUEST_FILENAME} !-d' >> dist/front-ay-b/browser/.htaccess
+          echo '    RewriteRule . /index.html [L]' >> dist/front-ay-b/browser/.htaccess
+          echo '</IfModule>' >> dist/front-ay-b/browser/.htaccess
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
@@ -47,14 +60,3 @@ jobs:
           port: 21
           local-dir: dist/front-ay-b/browser/
           server-dir: /
-
-      - name: Upload .htaccess
-        uses: SamKirkland/FTP-Deploy-Action@4.1.0
-        with:
-          server: ftp.aybecoconsultingperu.com
-          username: capacitaciones@aybecoconsultingperu.com
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          local-dir: access/.htaccess
-          server-dir: / # Colocarlo en el directorio donde se requiere en el servidor
-          dangerous-clean-slate: false
