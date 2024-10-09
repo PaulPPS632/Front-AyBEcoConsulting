@@ -55,6 +55,6 @@ jobs:
           username: capacitaciones@aybecoconsultingperu.com
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          local-dir: access/
+          local-dir: access/.htaccess
           server-dir: / # Colocarlo en el directorio donde se requiere en el servidor
           dangerous-clean-slate: false
