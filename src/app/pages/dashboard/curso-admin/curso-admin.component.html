@@ -1,0 +1,73 @@
+<div class="flex justify-end">
+    <button type="button"  class="text-white px-5 py-2 rounded-lg bg-teal-900 hover:bg-teal-800 font-extrabold">GUARDAR CAMBIOS</button>    
+</div>
+<h2 class="ml-4 font-bold text-2xl mt-2">Videos</h2>
+<div class="w-full min-h-24 flex flex-col gap-2 items-center justify-center bg-gray-200 rounded-xl container-video py-4">
+    <div cdkDropList (cdkDropListDropped)="drop($event)" class="list flex flex-col gap-2">
+        @for (video of Videos; track $index) {
+            <app-cart-video-create [data]="video" cdkDragLockAxis="y" cdkDrag class="box" (edit)="openEdit($index)"/>
+        }@empty {
+            <h2 class="font-bold text-xl">NO HAY VIDEOS, CREA UNO</h2>
+        }
+    </div>
+    
+    <div class="w-[400px] lg:w-[900px] h-20 flex flex-col items-center justify-center border-gray-950 border-2 rounded-lg">
+        <div (click)="OpenModalCreateVideo()" class="flex flex-col items-center justify-center">
+            <svg class="w-10 h-10 text-gray-700 hover:scale-110 transition-all cursor-pointer dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+            </svg>
+            <p>Agregar Video</p>
+        </div>
+    </div>
+</div>
+<h2 class="ml-4 font-bold text-2xl mt-10">Examenes</h2>
+<div class="w-full min-h-24 flex flex-col gap-2 items-center justify-center bg-gray-200 rounded-xl container-video">
+
+    <div class="w-[80%] h-20 flex flex-col items-center justify-center border-gray-950 border-2 rounded-lg">
+        <div (click)="toggleModalExamen()" class="flex flex-col items-center justify-center">
+            <svg class="w-10 h-10 text-gray-700 hover:scale-110 transition-all cursor-pointer dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+            </svg>
+            <p>Agregar Examen</p>
+        </div>
+    </div>
+</div>
+
+<app-modal-default [isOpen]="modalVideo" [title]="'NUEVO VIDEO'" (close)="CloseModalVideo()" >
+    @if(Videos.length > 0){
+        <app-input [Data]="Videos[SelectedVideo].titulo" (DataChange)="Videos[SelectedVideo].titulo = $event" [Name]="'Titulo'" [Placeholder]="'Ingresa titulo del video'"/>
+        <app-input [Data]="Videos[SelectedVideo].descripcion" (DataChange)="Videos[SelectedVideo].descripcion = $event" [Name]="'Descripcion'" [Placeholder]="'Ingresa la descripcion del video'"/>
+        <div class="grid md:grid-cols-[auto_auto] xl:grid-cols-[auto_auto_auto]  gap-2 items-start justify-start">
+            @for (item of Videos[SelectedVideo].topics; track $index) {
+                <!--<app-input class="w-96" [Data]="topics[$index]" (DataChange)="topics[$index] = $event" [Name]="'topic_' +$index" [Placeholder]="'Ingresa la descripcion del video'"/>-->
+                <div class="w-96">
+                    <label [for]="'topic_' +$index+'_r'" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{'Topic ' + ($index+1)}}</label>
+                    <div class="w-full flex flex-row flex-nowrap">
+                        <input type="text" [id]="'topic_' +$index+'_r'" [name]="'topic_' +$index" placeholder="Ingresa un topic" [(ngModel)]="Videos[SelectedVideo].topics[$index]" 
+                        class="w-[90%] h-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-teal-500 focus:border-teal-500 block   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" />
+                        <button class="w-[10%] h-8 flex items-center justify-center border border-gray-300  rounded-r-lg text-center text-gray-800 transition-colors hover:text-red-600 hover:bg-red-200" type="button" (click)="removetopic($index)">
+                            <svg class="w-4 h-4 font-bold" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                </div>
+            }
+            <div class="w-96 h-[60px] flex flex-col items-center justify-center border-gray-950 border-2 rounded-lg">
+                <div (click)="Videos[SelectedVideo].topics.push('')" class="flex flex-col items-center justify-center">
+                    <svg class="w-6 h-6 text-gray-700 hover:scale-110 transition-all cursor-pointer dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    </svg>
+                    <p class="text-sm font-light">Agregar Examen</p>
+                </div>
+            </div>
+        </div>
+        <input type="file" (change)="onFileChangeVideo($event)" placeholder="ingresa el video" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-96  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
+        <input type="file" (change)="onFileChangeMiniatura($event)" placeholder="ingresa la miniatura" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-96  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
+        
+        <button type="button" (click)="createVideo()" class="text-white px-5 py-2 rounded-lg bg-teal-900 hover:bg-teal-800 font-extrabold">GUARDAR</button>    
+    
+    }
+</app-modal-default>
+<app-modal-default [isOpen]="modalExamen" [title]="'NUEVO EXAMEN'" (close)="toggleModalExamen()" ></app-modal-default>

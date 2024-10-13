@@ -2,8 +2,8 @@
     <div class="md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
         <div>
             <a href="#" class="shrink-0 md:order-1">
-                <img class="w-28 dark:hidden" [src]="curso.ImagenPortada.url"  alt="url" />
-                <img class="hidden w-28 dark:block" [src]="curso.ImagenPortada.url"  alt="url" />
+                <img class="w-28 dark:hidden" [src]="curso.ImagenPortada.url"   [style]="'view-transition-name: ' + 'image_'+curso.ImagenPortada.id" alt="url" />
+                <img class="hidden w-28 dark:block" [src]="curso.ImagenPortada.url" [style]="'view-transition-name: ' + 'image_'+curso.ImagenPortada.id"  alt="url" />
               </a>
         </div>
 

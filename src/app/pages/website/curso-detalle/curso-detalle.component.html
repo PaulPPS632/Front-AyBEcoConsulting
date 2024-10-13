@@ -1,0 +1,128 @@
+<div class="bg-verde-petroleo w-full h-96 flex items-center justify-center">
+  <div class="relative max-w-screen-xl h-full lg:w-[1280px] mx-auto flex flex-row flex-wrap gap-5">
+    <div class="absolute w-96 h-[510px] shadow-2xl rounded-xl  bg-slate-100 flex flex-col  right-5 top-5 p-1">
+      <div class="mx-2 mt-2 ">
+        <img class="w-full h-60 rounded-t-xl object-cover" [src]="curso.ImagenPortada.url" [style]="'view-transition-name: ' + 'image_'+curso.ImagenPortada.id"  alt="" />
+      </div>
+      <div class="flex flex-col mx-2 mb-2 p-4 h-full border-solid border-[1px] rounded-b-xl border-gray-950 flex-nowrap justify-start items-start gap-4">
+        <p class="text-xl font-semibold">Suscríbete a los mejores cursos de AyBecoconsulting y Obtén este curso, además de otros de nuestros cursos mejor calificado.</p>
+        <p class="text-2xl font-bold">S/{{ curso.precio }}</p>
+        <button (click)="Agregar()" class="bg-verde-petroleo hover:bg-teal-900 text-white py-2 px-4 rounded-lg w-full">Añadir a la Cesta</button>
+        </div>
+    </div>
+    <div class="flex flex-col gap-5 justify-center text-white ">
+      <h1 class="font-bold text-4xl">{{ curso.nombre }}</h1>
+      <p class="text-gray-500 font-semibold text-2xl ">{{ curso.autor.nombre }}</p>
+      <p class="text-lg font-light w-[450px]">{{ curso.descripcion }}</p>
+      <p>Duracion: {{ curso.duracion }} h</p>      
+    </div>
+  </div>
+</div>
+
+<section class="max-w-screen-xl mx-auto p-1 md:p-4">
+    <h2 class="font-semibold text-xl">Lo que aprenderas</h2>
+    <div class=" mt-4 flex flex-row flex-wrap gap-10 max-w-[650px]">
+        <div class="flex flex-row flex-nowrap">
+            <div>
+                <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect x="0.5" width="27" height="27" fill="url(#pattern0_15_38)"/>
+                    <defs>
+                    <pattern id="pattern0_15_38" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_15_38" transform="scale(0.0111111)"/>
+                    </pattern>
+                    <image id="image0_15_38" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVR4nO3Zv2rDMBCAcbVD/wx9vJsNBt2mwU/gMUvp0K1bn6FD0BN1K5SS0jFF4JZsTVJ0kqzvB9oCufswxnGcAwAAAAAAAAAAAEyEEK5V9V5V31R1571/mqbp1ubb+4q8VdX94UmxS8+2+sjL+Sg9Xw+R03kvPWMPkdN5KD1nD5G36XOlZ22WiFx571/+iByHYbgpPWuziGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGmo88z/Olc+7CVSy0/EfqOI53qvqsql+q+um9f6xx0NBy5GSJXPXAofXI6XaxXMnVDh5aj3wQelfrAmENkX+ke3KNi4Q1Ra51oVDhTKt7NpWKZlntglLBDCZKLiq9RC65sPQWucTi0mtkywDSe2SLEELk/EGEyPnDCJHzBxIiH+c/oYTIpzknmBD5PKeEEyLbvGHTNb6Fs3bk1brv+sdIBbEjkfPHjkTOf2VHIuePHYmcP3Ykcp5Hv42qvi5nwyMcAAAAAAAAAAAA3K9vIncIPbqRZ2gAAAAASUVORK5CYII="/>
+                    </defs>
+                    </svg>
+            </div>
+            <h3>Monitoreo Ambiental</h3>
+        </div>
+        <div class="flex flex-row flex-nowrap">
+            <div>
+                <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect x="0.5" width="27" height="27" fill="url(#pattern0_15_38)"/>
+                    <defs>
+                    <pattern id="pattern0_15_38" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_15_38" transform="scale(0.0111111)"/>
+                    </pattern>
+                    <image id="image0_15_38" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVR4nO3Zv2rDMBCAcbVD/wx9vJsNBt2mwU/gMUvp0K1bn6FD0BN1K5SS0jFF4JZsTVJ0kqzvB9oCufswxnGcAwAAAAAAAAAAAEyEEK5V9V5V31R1571/mqbp1ubb+4q8VdX94UmxS8+2+sjL+Sg9Xw+R03kvPWMPkdN5KD1nD5G36XOlZ22WiFx571/+iByHYbgpPWuziGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGmo88z/Olc+7CVSy0/EfqOI53qvqsql+q+um9f6xx0NBy5GSJXPXAofXI6XaxXMnVDh5aj3wQelfrAmENkX+ke3KNi4Q1Ra51oVDhTKt7NpWKZlntglLBDCZKLiq9RC65sPQWucTi0mtkywDSe2SLEELk/EGEyPnDCJHzBxIiH+c/oYTIpzknmBD5PKeEEyLbvGHTNb6Fs3bk1brv+sdIBbEjkfPHjkTOf2VHIuePHYmcP3Ykcp5Hv42qvi5nwyMcAAAAAAAAAAAA3K9vIncIPbqRZ2gAAAAASUVORK5CYII="/>
+                    </defs>
+                    </svg>
+            </div>
+            <h3>Monitoreo Ambiental</h3>
+        </div>
+        <div class="flex flex-row flex-nowrap">
+            <div>
+                <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect x="0.5" width="27" height="27" fill="url(#pattern0_15_38)"/>
+                    <defs>
+                    <pattern id="pattern0_15_38" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_15_38" transform="scale(0.0111111)"/>
+                    </pattern>
+                    <image id="image0_15_38" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVR4nO3Zv2rDMBCAcbVD/wx9vJsNBt2mwU/gMUvp0K1bn6FD0BN1K5SS0jFF4JZsTVJ0kqzvB9oCufswxnGcAwAAAAAAAAAAAEyEEK5V9V5V31R1571/mqbp1ubb+4q8VdX94UmxS8+2+sjL+Sg9Xw+R03kvPWMPkdN5KD1nD5G36XOlZ22WiFx571/+iByHYbgpPWuziGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGmo88z/Olc+7CVSy0/EfqOI53qvqsql+q+um9f6xx0NBy5GSJXPXAofXI6XaxXMnVDh5aj3wQelfrAmENkX+ke3KNi4Q1Ra51oVDhTKt7NpWKZlntglLBDCZKLiq9RC65sPQWucTi0mtkywDSe2SLEELk/EGEyPnDCJHzBxIiH+c/oYTIpzknmBD5PKeEEyLbvGHTNb6Fs3bk1brv+sdIBbEjkfPHjkTOf2VHIuePHYmcP3Ykcp5Hv42qvi5nwyMcAAAAAAAAAAAA3K9vIncIPbqRZ2gAAAAASUVORK5CYII="/>
+                    </defs>
+                    </svg>
+            </div>
+            <h3>Monitoreo Ambiental</h3>
+        </div>
+        <div class="flex flex-row flex-nowrap">
+            <div>
+                <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect x="0.5" width="27" height="27" fill="url(#pattern0_15_38)"/>
+                    <defs>
+                    <pattern id="pattern0_15_38" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_15_38" transform="scale(0.0111111)"/>
+                    </pattern>
+                    <image id="image0_15_38" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVR4nO3Zv2rDMBCAcbVD/wx9vJsNBt2mwU/gMUvp0K1bn6FD0BN1K5SS0jFF4JZsTVJ0kqzvB9oCufswxnGcAwAAAAAAAAAAAEyEEK5V9V5V31R1571/mqbp1ubb+4q8VdX94UmxS8+2+sjL+Sg9Xw+R03kvPWMPkdN5KD1nD5G36XOlZ22WiFx571/+iByHYbgpPWuziGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGmo88z/Olc+7CVSy0/EfqOI53qvqsql+q+um9f6xx0NBy5GSJXPXAofXI6XaxXMnVDh5aj3wQelfrAmENkX+ke3KNi4Q1Ra51oVDhTKt7NpWKZlntglLBDCZKLiq9RC65sPQWucTi0mtkywDSe2SLEELk/EGEyPnDCJHzBxIiH+c/oYTIpzknmBD5PKeEEyLbvGHTNb6Fs3bk1brv+sdIBbEjkfPHjkTOf2VHIuePHYmcP3Ykcp5Hv42qvi5nwyMcAAAAAAAAAAAA3K9vIncIPbqRZ2gAAAAASUVORK5CYII="/>
+                    </defs>
+                    </svg>
+            </div>
+            <h3>Monitoreo Ambiental</h3>
+        </div>
+        <div class="flex flex-row flex-nowrap">
+            <div>
+                <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect x="0.5" width="27" height="27" fill="url(#pattern0_15_38)"/>
+                    <defs>
+                    <pattern id="pattern0_15_38" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_15_38" transform="scale(0.0111111)"/>
+                    </pattern>
+                    <image id="image0_15_38" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVR4nO3Zv2rDMBCAcbVD/wx9vJsNBt2mwU/gMUvp0K1bn6FD0BN1K5SS0jFF4JZsTVJ0kqzvB9oCufswxnGcAwAAAAAAAAAAAEyEEK5V9V5V31R1571/mqbp1ubb+4q8VdX94UmxS8+2+sjL+Sg9Xw+R03kvPWMPkdN5KD1nD5G36XOlZ22WiFx571/+iByHYbgpPWuziGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGmo88z/Olc+7CVSy0/EfqOI53qvqsql+q+um9f6xx0NBy5GSJXPXAofXI6XaxXMnVDh5aj3wQelfrAmENkX+ke3KNi4Q1Ra51oVDhTKt7NpWKZlntglLBDCZKLiq9RC65sPQWucTi0mtkywDSe2SLEELk/EGEyPnDCJHzBxIiH+c/oYTIpzknmBD5PKeEEyLbvGHTNb6Fs3bk1brv+sdIBbEjkfPHjkTOf2VHIuePHYmcP3Ykcp5Hv42qvi5nwyMcAAAAAAAAAAAA3K9vIncIPbqRZ2gAAAAASUVORK5CYII="/>
+                    </defs>
+                    </svg>
+            </div>
+            <h3>Monitoreo Ambiental</h3>
+        </div>
+        <div class="flex flex-row flex-nowrap">
+            <div>
+                <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect x="0.5" width="27" height="27" fill="url(#pattern0_15_38)"/>
+                    <defs>
+                    <pattern id="pattern0_15_38" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_15_38" transform="scale(0.0111111)"/>
+                    </pattern>
+                    <image id="image0_15_38" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVR4nO3Zv2rDMBCAcbVD/wx9vJsNBt2mwU/gMUvp0K1bn6FD0BN1K5SS0jFF4JZsTVJ0kqzvB9oCufswxnGcAwAAAAAAAAAAAEyEEK5V9V5V31R1571/mqbp1ubb+4q8VdX94UmxS8+2+sjL+Sg9Xw+R03kvPWMPkdN5KD1nD5G36XOlZ22WiFx571/+iByHYbgpPWuziGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGmo88z/Olc+7CVSy0/EfqOI53qvqsql+q+um9f6xx0NBy5GSJXPXAofXI6XaxXMnVDh5aj3wQelfrAmENkX+ke3KNi4Q1Ra51oVDhTKt7NpWKZlntglLBDCZKLiq9RC65sPQWucTi0mtkywDSe2SLEELk/EGEyPnDCJHzBxIiH+c/oYTIpzknmBD5PKeEEyLbvGHTNb6Fs3bk1brv+sdIBbEjkfPHjkTOf2VHIuePHYmcP3Ykcp5Hv42qvi5nwyMcAAAAAAAAAAAA3K9vIncIPbqRZ2gAAAAASUVORK5CYII="/>
+                    </defs>
+                    </svg>
+            </div>
+            <h3>Monitoreo Ambiental</h3>
+        </div>
+        <div class="flex flex-row flex-nowrap">
+            <div>
+                <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect x="0.5" width="27" height="27" fill="url(#pattern0_15_38)"/>
+                    <defs>
+                    <pattern id="pattern0_15_38" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_15_38" transform="scale(0.0111111)"/>
+                    </pattern>
+                    <image id="image0_15_38" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABkUlEQVR4nO3Zv2rDMBCAcbVD/wx9vJsNBt2mwU/gMUvp0K1bn6FD0BN1K5SS0jFF4JZsTVJ0kqzvB9oCufswxnGcAwAAAAAAAAAAAEyEEK5V9V5V31R1571/mqbp1ubb+4q8VdX94UmxS8+2+sjL+Sg9Xw+R03kvPWMPkdN5KD1nD5G36XOlZ22WiFx571/+iByHYbgpPWuziGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGiGyAyAaIbIDIBohsgMgGmo88z/Olc+7CVSy0/EfqOI53qvqsql+q+um9f6xx0NBy5GSJXPXAofXI6XaxXMnVDh5aj3wQelfrAmENkX+ke3KNi4Q1Ra51oVDhTKt7NpWKZlntglLBDCZKLiq9RC65sPQWucTi0mtkywDSe2SLEELk/EGEyPnDCJHzBxIiH+c/oYTIpzknmBD5PKeEEyLbvGHTNb6Fs3bk1brv+sdIBbEjkfPHjkTOf2VHIuePHYmcP3Ykcp5Hv42qvi5nwyMcAAAAAAAAAAAA3K9vIncIPbqRZ2gAAAAASUVORK5CYII="/>
+                    </defs>
+                    </svg>
+            </div>
+            <h3>Monitoreo Ambiental</h3>
+        </div>
+    </div>
+    <app-carousel [items]="recomendados" [title]="'RECOMENDACIONES'" />
+</section>
+
+
+

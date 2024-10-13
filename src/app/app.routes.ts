@@ -5,13 +5,15 @@ export const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./website/website.routes').then((m) => m.WebsiteRoutesModule),
+      import('./pages/website/website.routes').then(
+        (m) => m.WebsiteRoutesModule
+      ),
   },
   {
     path: 'dashboard',
     canActivate: [authGuard],
     loadChildren: () =>
-      import('./dashboard/dashboard.routes').then(
+      import('./pages/dashboard/dashboard.routes').then(
         (m) => m.DashboardRoutesModule
       ),
     data: {
@@ -23,7 +25,9 @@ export const routes: Routes = [
     path: 'panel',
     canActivate: [authGuard],
     loadChildren: () =>
-      import('./panelcliente/panel.routes').then((m) => m.PanelRoutesModule),
+      import('./pages/panelcliente/panel.routes').then(
+        (m) => m.PanelRoutesModule
+      ),
     data: {
       title: 'Panel',
       roles: ['alumno'],

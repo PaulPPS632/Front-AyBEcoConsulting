@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CartStateService } from '../../services/cart-state.service';
 import Swal from 'sweetalert2';
@@ -10,10 +10,13 @@ import Swal from 'sweetalert2';
   templateUrl: './cart-curso.component.html',
   styleUrl: './cart-curso.component.css',
 })
-export class CartCursoComponent {
+export class CartCursoComponent implements OnInit {
   @Input() curso: any;
   CartStateService = inject(CartStateService);
   router = inject(Router);
+  ngOnInit(): void {
+    console.log(this.curso);
+  }
   Agregar() {
     const agregado = this.CartStateService.addCurso(this.curso);
     if (agregado) {
