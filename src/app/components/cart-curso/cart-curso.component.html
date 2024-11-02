@@ -2,6 +2,7 @@
     <div [routerLink]="['/curso', curso.id]" class="w-full h-32 object-contain">
       <img class="mx-auto w-full h-32  object-cover dark:hidden rounded-lg" [src]="curso.ImagenPortada.url" [style]="'view-transition-name: ' + 'image_'+curso.ImagenPortada.id" alt="imagen de Curso" />
     </div>
+
     <div [routerLink]="['/curso', curso.id]" class="pt-6 flex-grow h-24">
       <p class="text-sm md:text-lg font-semibold leading-tight text-gray-900 dark:text-white hover:underline hover:cursor-pointer hover:text truncate">
         {{curso.nombre}}
@@ -13,6 +14,7 @@
         </div>
       </div>
     </div>
+    
     <div class="mt-2 md:mt-4 flex flex-row flex-nowrap justify-between items-center">
         <div>
             S/. {{curso.precio}}

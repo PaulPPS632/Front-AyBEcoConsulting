@@ -1,82 +1,217 @@
 <section class="bg-gray-50 dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
-      <div class="flex flex-col justify-center">
-        <div >
-          <app-svg-amigos [estilos]="'min-h-[50px] max-h-[450px] hidden sm:block'"/>
-        </div>
-      </div>
+  <div
+    class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16"
+  >
+    <div class="flex flex-col justify-center">
       <div>
-        <div class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800">
-          <form class="space-y-6">
-            <div>
-              <label for="user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usuario</label>
-              <input type="user" name="user" id="user" [(ngModel)]="UserNew.email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="usuario" required />
-            </div>
-            <div>
-              <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
-              <input type="password" name="password" id="password" placeholder="••••••••" [(ngModel)]="UserNew.password"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" required />
-            </div>
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input id="remember" aria-describedby="remember" name="remember" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-teal-300 dark:focus:ring-teal-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" required />
-              </div>
-              <div class="ms-3 text-sm">
-                <label for="remember" class="font-medium text-gray-500 dark:text-gray-400">Recordar información</label>
-              </div>
-              <a href="#" class="ms-auto text-sm font-medium text-teal-600 hover:underline dark:text-teal-500">Olvido su contraseña?</a>
-            </div>
-            <button routerLink="/dashboard" type="submit"
-              class="w-full px-5 py-3 text-base font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 sm:w-auto dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
-              (click)="login()" >Ingrese a su cuenta</button>
-          </form>
-
-          <div class="text-sm font-medium text-gray-900 dark:text-white">
-            ¿Aún no estás registrado? <button (click)="openCModal()" class="text-teal-600 hover:underline dark:text-teal-500">Crear Cuenta</button>
+        <app-svg-amigos
+          [estilos]="'min-h-[50px] max-h-[450px] hidden sm:block'"
+        />
+      </div>
+    </div>
+    <div>
+      <div
+        class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800"
+      >
+        <form class="space-y-6">
+          <div>
+            <label
+              for="user"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Usuario</label
+            >
+            <input
+              type="user"
+              name="user"
+              id="user"
+              [(ngModel)]="UserNew.email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+              placeholder="usuario"
+              required
+            />
           </div>
+          <div>
+            <label
+              for="password"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="••••••••"
+              [(ngModel)]="UserNew.password"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+              required
+            />
+          </div>
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input
+                id="remember"
+                aria-describedby="remember"
+                name="remember"
+                type="checkbox"
+                class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-teal-300 dark:focus:ring-teal-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                required
+              />
+            </div>
+            <div class="ms-3 text-sm">
+              <label
+                for="remember"
+                class="font-medium text-gray-500 dark:text-gray-400"
+                >Recordar información</label
+              >
+            </div>
+            <a
+              href="#"
+              class="ms-auto text-sm font-medium text-teal-600 hover:underline dark:text-teal-500"
+              >Olvido su contraseña?</a
+            >
+          </div>
+          <button
+            routerLink="/dashboard"
+            type="submit"
+            class="w-full px-5 py-3 text-base font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 sm:w-auto dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
+            (click)="login()"
+          >
+            Ingrese a su cuenta
+          </button>
+        </form>
 
+        <div class="text-sm font-medium text-gray-900 dark:text-white">
+          ¿Aún no estás registrado?
+          <button
+            (click)="openCModal()"
+            class="text-teal-600 hover:underline dark:text-teal-500"
+          >
+            Crear Cuenta
+          </button>
         </div>
       </div>
     </div>
+  </div>
 
-    <app-modal [isOpen]="CreateOpen" [title]="'Crear Cuenta'" (close)="closeModal()">
-      <form (ngSubmit)="register()">
+  <app-modal
+    [isOpen]="CreateOpen"
+    [title]="'Crear Cuenta'"
+    (close)="closeModal()"
+  >
+    <form (ngSubmit)="register()">
+      <div class="mb-6">
+        <label
+          for="username_r"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Email</label
+        >
+        <input
+          type="text"
+          id="username_r"
+          name="username_r"
+          placeholder="Ingrese nombre del usuario..."
+          [(ngModel)]="UserNew.email"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+        />
+      </div>
 
-        <div class="mb-6">
-          <label for="username_r" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-          <input type="text" id="username_r" name="username_r" placeholder="Ingrese nombre del usuario..." [(ngModel)]="UserNew.email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" />
-        </div>
+      <div class="mb-6">
+        <label
+          for="password_r"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Contraseña</label
+        >
+        <input
+          type="password"
+          id="password_r"
+          name="password_r"
+          placeholder="Ingrese contraseña del usuario..."
+          [(ngModel)]="UserNew.password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+        />
+      </div>
 
-        <div class="mb-6">
-          <label for="password_r" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
-          <input type="password" id="password_r" name="password_r" placeholder="Ingrese contraseña del usuario..." [(ngModel)]="UserNew.password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" />
-        </div>
-        
-        <div class="mb-6">
-          <label for="nombre_r" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-          <input type="text" id="nombre_r" name="nombre_r" placeholder="Ingrese contraseña del usuario..." [(ngModel)]="UserNew.nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" />
-        </div>
-        <div class="mb-6">
-          <label for="apellido_r" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
-          <input type="text" id="apellido_r" name="apellido_r" placeholder="Ingrese contraseña del usuario..." [(ngModel)]="UserNew.apellido" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" />
-        </div>
-        <div class="mb-6">
-          <label for="documento_r" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Documento</label>
-          <input type="text" id="documento_r" name="documento_r" placeholder="Ingrese el Documento..." [(ngModel)]="UserNew.documento" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" />
-        </div>
-        <div class="mb-6">
-          <label for="direccion_r" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion</label>
-          <input type="text" id="direccion_r" name="direccion_r" placeholder="Ingrese direccion del usuario..." [(ngModel)]="UserNew.direccion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" />
-        </div>
-        <div class="mb-6">
-          <label for="telefono_r" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono/Celular</label>
-          <input type="text" id="telefono_r" name="telefono_r" placeholder="Ingrese telefono/celular del usuario..." [(ngModel)]="UserNew.telefono" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" />
-        </div>
-        <button
-        class="w-full items-center rounded-lg bg-teal-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-teal-800 focus:outline-none focus:ring-4  focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
-        type="submit">Crear</button>
-
-      </form>
-    </app-modal>
+      <div class="mb-6">
+        <label
+          for="nombre_r"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Nombre</label
+        >
+        <input
+          type="text"
+          id="nombre_r"
+          name="nombre_r"
+          placeholder="Ingrese contraseña del usuario..."
+          [(ngModel)]="UserNew.nombre"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="apellido_r"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Apellido</label
+        >
+        <input
+          type="text"
+          id="apellido_r"
+          name="apellido_r"
+          placeholder="Ingrese contraseña del usuario..."
+          [(ngModel)]="UserNew.apellido"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="documento_r"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Documento</label
+        >
+        <input
+          type="text"
+          id="documento_r"
+          name="documento_r"
+          placeholder="Ingrese el Documento..."
+          [(ngModel)]="UserNew.documento"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="direccion_r"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Direccion</label
+        >
+        <input
+          type="text"
+          id="direccion_r"
+          name="direccion_r"
+          placeholder="Ingrese direccion del usuario..."
+          [(ngModel)]="UserNew.direccion"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="telefono_r"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Telefono/Celular</label
+        >
+        <input
+          type="text"
+          id="telefono_r"
+          name="telefono_r"
+          placeholder="Ingrese telefono/celular del usuario..."
+          [(ngModel)]="UserNew.telefono"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+        />
+      </div>
+      <button
+        class="w-full items-center rounded-lg bg-teal-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
+        type="submit"
+      >
+        Crear
+      </button>
+    </form>
+  </app-modal>
 </section>
-
-

@@ -1,0 +1,42 @@
+<div class="mb-4">
+  <h3>{{data.pregunta}}</h3>
+
+  <div class="flex flex-row flex-nowrap gap-2">
+    <div class="flex flex-col flex-nowrap gap-2">
+      @for (colA of data.opciones.columnA; track $index) {
+        <div class="w-96 flex flex-row justify-between">
+          <div>
+            <p>
+              {{colA.contenido}}
+            </p>
+          </div>
+          <div class="flex flex-row">
+            <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
+            </svg>
+            <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
+            </svg>   
+          </div>
+        </div>
+      }
+    </div>
+      <div cdkDropList (cdkDropListDropped)="drop($event)" class="flex flex-col flex-nowrap">
+        @for (colB of data.opciones.columnB; track $index) {
+          <div cdkDragLockAxis="y" cdkDrag class="flex flex-row gap-1 border-2 border-gray-300 rounded-lg">
+            <div cdkDragHandle class="cursor-move">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
+              </svg>
+            </div>
+            <p class="inline-block">
+              {{colB}}
+            </p>
+          </div>
+            
+        }
+      </div>
+      
+  </div>
+  <button type="button"  class="text-white px-5 py-2 rounded-lg bg-teal-900 hover:bg-teal-800 font-extrabold">Guarda Preguntas</button>
+</div>

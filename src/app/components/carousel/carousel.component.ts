@@ -35,9 +35,9 @@ export class CarouselComponent implements OnInit {
     const maxSlidesPerView = 5;
     console.log('cantidad de items en carousel:', this.items.length);
     const swiperOption: SwiperOptions = {
-      autoplay: {
-        delay: 5000,
-      },
+      //autoplay: {
+      //  delay: 5000,
+      //},
       //scrollbar: true,
       loop: true,
       navigation: {

@@ -1,0 +1,12 @@
+<div class="mb-4">
+    <h2>{{data.pregunta}}</h2>
+
+    <div class="flex flex-col flex-nowrap gap-2">
+        @for (opcion of data.opciones; track $index) {
+            <div class="flex flex-row flex-nowrap gap-1">
+                <input type="checkbox" [id]="'check_'+$index+1" [(ngModel)]="opcion.check" (ngModelChange)="CheckOpcionPrgResp($index)" > <!--<span>{{$index+1}})</span>--> <p>{{opcion.contenido}}</p>
+            </div>
+        }
+    </div>
+    <button type="button" (click)="SaveRespuestas()" class="text-white px-5 py-2 rounded-lg bg-teal-900 hover:bg-teal-800 font-extrabold">Guarda Preguntas</button>
+</div>

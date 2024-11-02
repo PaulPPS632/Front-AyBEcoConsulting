@@ -70,4 +70,6 @@
     
     }
 </app-modal-default>
-<app-modal-default [isOpen]="modalExamen" [title]="'NUEVO EXAMEN'" (close)="toggleModalExamen()" ></app-modal-default>
+<app-modal-default [isOpen]="modalExamen" [title]="'NUEVO EXAMEN'" (close)="toggleModalExamen()" >
+    <app-crear-examen/>
+</app-modal-default>

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { VideosService } from '../../../services/videos.service';
 import { Video } from '../../../interfaces/Videos';
 import Swal from 'sweetalert2';
+import { CrearExamenComponent } from '../../../components/crear-examen/crear-examen.component';
 @Component({
   selector: 'app-curso-admin',
   standalone: true,
@@ -22,6 +23,7 @@ import Swal from 'sweetalert2';
     CdkDropList,
     InputComponent,
     FormsModule,
+    CrearExamenComponent,
   ],
   templateUrl: './curso-admin.component.html',
   styleUrl: './curso-admin.component.css',
