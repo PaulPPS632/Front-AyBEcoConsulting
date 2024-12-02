@@ -76,7 +76,7 @@ export class CursosComponent implements OnInit {
   Crear() {
     const formData = new FormData();
     console.log(this.NewCurso);
-    formData.append('curso', JSON.stringify(this.NewCurso));
+    formData.append('producto', JSON.stringify(this.NewCurso));
     if (this.selectedFilePrincipal) {
       formData.append('fileprincipal', this.selectedFilePrincipal);
     }
